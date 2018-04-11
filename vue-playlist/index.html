@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue.js</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+	<!-- vue-app是根容器 -->
+	<div id="vue-app">
+		<h1>{{name}}{{old}}岁</h1>
+		<h3>{{greet('afternoon')}}</h3>
+		<a v-bind:href="website">百度一下</a>
+		<input type="text" v-bind:value="name">
+		<!-- {{websiteTag}} -->
+		<p v-html="websiteTag"></p>
+		<hr>
+		<h1>Events</h1>
+		<!-- <button v-on:click="old++">加一岁</button>
+		<button v-on:click="old--">减一岁</button> -->
+		<button @click="add(1)">单击加一岁</button>
+		<button @click.once="add(1)">只能点一次加一岁</button>
+		<button v-on:click="substract(1)">单击减一岁</button>
+		<button @dblclick="add(5)">双击加五岁</button>
+		<button v-on:dblclick="substract(5)">双击减五岁</button>
+		<p>My age is {{old}}</p>
+
+		<div id="canvas" v-on:mousemove="updateXY">
+			{{x}},{{y}} - 
+			<!-- <span v-on:mousemove="stopMoving">Stop Moving</span> -->
+			<span v-on:mousemove.stop="">Stop Moving</span>
+		</div>
+
+		<a v-on:click.prevent="alert" href="http://www.baidu.com">百度</a>
+		<hr>
+		<h1>键盘Events</h1>
+		<label>姓名:</label><input type="text" v-on:keyup.enter="logName">
+		<label>年龄:</label><input type="text" v-on:keyup.alt.enter="logAge">
+		<hr>
+		<h1>双向数据绑定/input/select/textarea</h1>
+		<!-- <label>姓名:</label><input type="text" v-on:keyup="logName" ref="name">
+		<span>{{name}}</span>
+		<label>年龄:</label><input type="text" v-on:keyup="logAge" ref="age">
+		<span>{{age}}</span> -->
+		<label>姓名:</label><input type="text" ref="name" v-model="name">
+		<span>{{name}}</span>
+		<label>年龄:</label><input type="text"  ref="age" v-model="age">
+		<span>{{age}}</span>
+
+		<hr><hr>
+		<h1>Computed计算属性</h1>
+		<button @click="a++">Add to A</button>
+		<button @click="b++">Add to B</button>
+		<p>A - {{a}}</p>
+		<p>B - {{b}}</p>
+		<!-- <p>Age + A = {{addToA()}}</p>
+		<p>Age + B = {{addToB()}}</p> -->
+		<p>Age + A = {{addToA}}</p>
+		<p>Age + B = {{addToB}}</p>
+		<hr>
+		<h3>动态CSS class</h3>
+		<h4 v-bind:class="{red:true,blue:true}">示例１</h4>
+		<div v-on:click="changeColor=!changeColor" v-bind:class="{changeColor:changeColor}">
+			<span>tt</span>
+		</div>
+		<h4>示例２</h4>
+		<button @click="changeColor=!changeColor">change color</button>
+		<button @click="changeLength=!changeLength">change length</button>
+		<div v-bind:class="compClasses">
+			<span>henry</span>
+		</div>
+
+		<hr>
+
+		<h1>v-if条件</h1>
+		<button @click="error=!error">Toggle Error</button>
+		<button @click="success=!success">Toggle Success</button>
+
+		<p v-if="error">网络链接错误:404</p>
+		<p v-else-if="success">网络链接成功:200</p>
+
+		<!-- <p v-show="error">网络链接错误:404</p>
+		<p v-show="success">网络链接成功:200</p> -->
+
+		<hr>
+		<h2>v-for</h2>
+		<!-- 数组下标获取 -->
+<!-- 		{{characters[0]}}
+		{{characters[1]}}
+		{{characters[2]}} -->
+
+		<!-- 数组遍历 -->
+		<ul>
+			<li v-for="character in characters">{{character}}</li>
+		</ul>
+
+		<ul>
+			<!-- <li v-for="user in users">{{user.name}}:{{user.age}}</li> -->
+			<li v-for="(user,index) in users">{{index+1}}.{{user.name}}:{{user.age}}</li>
+		</ul>
+
+		<!-- <div v-for="(user,index) in users">
+			<h3>{{index}}.{{user.name}}</h3>
+			<p>Age - {{user.age}}</p>
+		</div> -->
+
+		<template v-for="(user,index) in users">
+			<h3>{{index}}.{{user.name}}</h3>
+			<p>Age - {{user.age}}</p>
+		</template>
+
+		<template v-for="(user,index) in users">
+			<div v-for="(val,key) in user">
+				<p>{{key}} - {{val}}</p>
+			</div>
+		</template>
+
+
+		<hr>
+		<h2>vue组件</h2>
+		<div id="vue-app-one">
+			<greeting></greeting>
+		</div>
+		<div id="vue-app-two">
+			<greeting></greeting>
+		</div>
+	<!-- 	<div id="vue-app-one">
+			<h2>{{title}}</h2>
+		</div>
+		<div id="vue-app-two">
+			<h2>{{title}}</h2> 
+    		<button @click="changeTitle">修改app-one的标题</button>
+		</div> -->
+	</div>
+</body>
+<script src="app.js"></script>
+</html>
+
