@@ -160,13 +160,17 @@ import x  from  ..   x定义规则?  ..指路径下组件名
 		template:'<A/>'
 	A通常都是App,因为涉及的App有点多，有点乱.
 	这里的template中的<App/>的App和上面import后面的App要保持一致吗？
-	(2)import A from B: A的名称是自己起吗？大小写有要求没？大小写一致吗?
+	(2)import A from B: A的名称是自己起吗？大小写有要求没？大小写一致吗?           ——名称自己起
 2.App.vue——
 	export default{
-		name:'n' ,          
+		name:'n' ,          ——name可给可不给     
 		这个name的作用是用来标识组件吗?命名规则呢？大小写一致吗?看基本都是和组件名一样，把首字母小写了；也发现和组件名一致的,依然首字母大写。
 
 		components:{
-			"a":"b"   此处的a和上面的name的内容n有关系吗?
+			"a":"b"   此处的a和上面的name的内容n有关系吗?        ——这里的a指的就是template:'<A/>'
 		}
 	}
+
+
+重点是compontent里面的内容，其他都是自定义,默认组件名是啥class起啥.
+compontent里面的是组件名称,其他是调用一下.
