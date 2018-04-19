@@ -1,66 +1,7 @@
 # vue_enter
 
-###  第六课　后台管理系统
-上传主要的index.html以及src文件和json数据
+###  第五课　博客
+src不涉及野狗请求接口
+src1是野狗＋axios实现
 
-
-// 获取所有用户信息
-http://localhost:3000/users
-
-// 获取id为1的用户信息
-http://localhost:3000/users/1
-
-// 获取公司的所有信息
-http://localhost:3000/companies
-
-// 获取单个公司的信息
-http://localhost:3000/companies/1
-
-// 获取所有公司id为3的用户
-http://localhost:3000/companies/3/users
-
-// 根据公司名字获取信息
-http://localhost:3000/companies?name=Microsoft
-
-// 根据多个名字获取公司信息
-http://localhost:3000/companies?name=Microsoft&name=Apple
-
-// 获取一页中只有两条数据
-http://localhost:3000/companies?_page=1&_limit=2
-
-// 升序排序 asc升序 desc降序
-http://localhost:3000/companies?_sort=name&_order=asc
-
-// 获取年龄30及以上的
-http://localhost:3000/users?age_gte=30
-
-// 获取年龄在30到40之间
-http://localhost:3000/users?age_gte=30&age_lte=40
-
-// 搜索用户信息
-http://localhost:3000/users?q=h
-
-
-
-
-sudo npm  install -g json-server    ——全局安装json-server
-cd  JSONSERVER
-npm init ——初始化   回车 -> package.json
-npm install json-server --save
-
-
- "scripts": {
-    "json:server": "json-server --watch db.json"
-  },
-
-
-  ->db.json -> npm run json:server  如果报错，加sudo 
-
-  ->package.json:
-
-  "scripts": {
-    "json:server": "json-server --watch db.json"
-    "json:server:remote":"json-server http://jsonplaceholder.typicode.com/db"
-  },
-  -> sudo npm run json:server:remote
 
